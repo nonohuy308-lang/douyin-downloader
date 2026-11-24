@@ -1,0 +1,81 @@
+DOUYIN — TẢI VIDEO THEO LỰA CHỌN — 1.1
+
+Đây là bản thử nghiệm Windows, giao diện dựa trên app TikTok anh cung cấp.
+Mở Douyin-Downloader.exe. Không cần cài Python. Máy cần có Microsoft Edge.
+
+1. Dán link kênh /user/... hoặc link chia sẻ https://v.douyin.com/...
+2. Chọn số video, bấm Quét kênh / video.
+3. App mở cửa sổ Edge riêng. Nếu Douyin yêu cầu đăng nhập hoặc xác minh,
+   tự thao tác trong cửa sổ đó. App không tự đăng nhập hoặc giải xác minh.
+4. Bấm từng dòng hoặc Chọn tất cả. Chọn thư mục lưu.
+5. Bấm Tải video đã chọn. Bấm Mở để xem thư mục sau khi tải.
+
+Nếu chưa quét được:
+- Bấm Mở Douyin / Đăng nhập, thao tác trong trình duyệt rồi Quét lại.
+- Có thể dùng link dài https://www.douyin.com/user/... nếu link rút gọn lỗi.
+- Cửa sổ Edge dành riêng cho app không dùng phiên đăng nhập Edge thường.
+- Không đóng cửa sổ Edge trong khi quét/tải. Không chuyển sang kênh khác
+  trong cửa sổ này khi app đang quét.
+- Nếu Douyin chặn truy cập, app báo lỗi; không có chức năng vượt chặn.
+
+PHẠM VI
+- Quét video công khai trong hồ sơ Douyin, hoặc một link video.
+- Chọn/bỏ chọn, lọc riêng theo Lượt thích hoặc Lượt xem.
+- Lượt thích là số tim, không phải số lượt xem. Mặc định lọc Lượt thích.
+- Dấu “—” nghĩa là chưa có số liệu xác thực. Không dùng số này như 0.
+- Nếu thiếu toàn bộ dữ liệu của tiêu chí đang lọc, app báo lý do và giữ
+  nguyên lựa chọn hiện tại. Có thể đổi sang Lượt thích khi thiếu lượt xem.
+- Nếu chỉ một số video thiếu dữ liệu, chúng không được chọn theo bộ lọc;
+  app báo số video thiếu dữ liệu và số video được chọn.
+- “Từ mức này trở lên” bao gồm mức vừa nhập. “Dưới mức này” không bao gồm.
+- “Không lọc” + “Lọc & chọn” chọn toàn bộ danh sách đã quét.
+- Giữ chất lượng tốt nhất trong các nguồn mà Douyin trả về.
+- Tải lần lượt, tiếp tục video tiếp theo nếu một video lỗi.
+- Tệp có hậu tố .pending chỉ được đổi thành .mp4 sau khi kiểm tra.
+- Kiểm tra định dạng MP4 và giải mã 1 giây đầu bằng FFmpeg, không bảo đảm
+  toàn bộ video dài đều không có lỗi.
+- Bỏ qua tệp đã có cùng tên và vượt kiểm tra. Bấm Dừng để dừng tác vụ;
+  một kết nối đang chờ có thể cần tối đa 60 giây.
+- Chưa tải bài ảnh, phát trực tiếp, kênh riêng tư, hoặc chuyển độ phân giải.
+- Không cam kết xóa watermark. Chỉ tải nội dung anh có quyền sử dụng.
+
+DỮ LIỆU
+Không gửi link qua dịch vụ phân tích bên ngoài. App truy cập Douyin và
+máy chủ video được trang Douyin trả về. Phiên trình duyệt riêng được lưu
+tại %LOCALAPPDATA%\DouyinDownloader\BrowserProfile. Phiên này có thể chứa
+cookie đăng nhập; không gửi thư mục này cho người khác.
+Video mặc định ở thư mục Downloads\Douyin-Videos của tài khoản Windows.
+
+KIỂM CHỨNG
+Đã kiểm thử tải video mẫu có hình/tiếng qua máy chủ cục bộ, bỏ qua trùng,
+phát hiện nguồn giả video, dọn tệp dở và dừng trước tác vụ.
+Đã kiểm tra nhập link, tên tệp Windows và đọc dữ liệu metadata.
+Kiểm thử sửa lỗi lọc 1.1: không xóa lựa chọn khi thiếu lượt xem; số lượt
+thích 0 hợp lệ; ngưỡng 1.000 bao gồm đúng 1.000; loại số liệu chưa biết;
+từ chối ngưỡng âm. Đã chạy kiểm thử trực tiếp hàm xử lý nút lọc của UI.
+Đã kiểm tra bản .exe 1.1 trên kênh thật: quét 30 video, lọc từ 1.000
+lượt thích trở lên chọn đúng 3/30 video; không có video thiếu lượt thích.
+Đã chạy bản .exe trên máy anh sau khi anh tự đăng nhập Douyin:
+- Quét 30 video của kênh dayangmama666 từ link v.douyin.com anh cung cấp.
+- Tải thành công video 7709306248000670193, dung lượng 2.225.670 byte.
+- Video 11,90 giây, 1080 x 1920, hình H.264 và âm thanh AAC stereo.
+- Giải mã toàn bộ cả hình lẫn tiếng bằng FFmpeg: không lỗi.
+- Đã thêm cách tải qua phiên trình duyệt khi kết nối Requests báo lỗi.
+Chưa tải thử toàn bộ 30 video hoặc tất cả 603 video của kênh.
+Douyin có thể thay đổi cấu trúc trang hoặc giới hạn truy cập.
+
+MÃ NGUỒN
+app.py: giao diện. engine.py: đọc phản hồi của trang và tải video.
+Python 3.12+ với tkinter; cài các phiên bản trong requirements.txt.
+Chạy: python app.py
+Đóng gói với bản Python Windows đầy đủ Tcl/Tk:
+python -m PyInstaller --noconfirm --onefile --windowed --name Douyin-Downloader --collect-all playwright --collect-all imageio_ffmpeg app.py
+
+THƯ VIỆN
+Playwright (Apache-2.0): https://github.com/microsoft/playwright-python
+Requests (Apache-2.0): https://github.com/psf/requests
+Imageio-FFmpeg (BSD-2-Clause cho wrapper; FFmpeg có giấy phép riêng):
+https://github.com/imageio/imageio-ffmpeg
+FFmpeg: https://ffmpeg.org/legal.html
+Python / Tcl / Tk: https://www.python.org/psf/license/
+PyInstaller: https://pyinstaller.org/en/stable/license.html

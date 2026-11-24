@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.spec
+*.exe
+*.zip
+*.pending
+*.mp4
+BrowserProfile/
+Video-thu/
+cookies*
+.env
+.env.*
